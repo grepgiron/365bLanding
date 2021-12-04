@@ -4,7 +4,7 @@ import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 
 const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
+  'https://i.ibb.co/J70NkJg/logo.jpg';
 
 export default function ProductHero() {
   return (
@@ -16,34 +16,21 @@ export default function ProductHero() {
       }}
     >
       {/* Increase the network loading priority of the background image. */}
-      <img
-        style={{ display: 'none' }}
-        src={backgroundImage}
-        alt="increase priority"
-      />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Siempre es importante sentirte bella
       </Typography>
       <Typography
         color="inherit"
         align="center"
         variant="h5"
-        sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
+        sx={{ mb: 4, mt: { sx: 4, sm: 10 }, maxWidth: 'sm' }}
       >
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        Satisfacer las necesidades de belleza de nuestros clientes mediante servicios de alta calidad.
+        Brindado por un personal calificado que inspira confianza, para darte la mejor experiencia y superar
+        tus expectativas.
       </Typography>
-      <Button
-        color="secondary"
-        variant="contained"
-        size="large"
-        component="a"
-        href="/premium-themes/onepirate/sign-up/"
-        sx={{ minWidth: 200 }}
-      >
-        Register
-      </Button>
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
-        Discover the experience
+        Descubre la experiencia
       </Typography>
     </ProductHeroLayout>
   );

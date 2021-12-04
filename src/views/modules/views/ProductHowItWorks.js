@@ -41,19 +41,9 @@ function ProductHowItWorks() {
           alignItems: 'center',
         }}
       >
-        <Box
-          component="img"
-          src="/static/themes/onepirate/productCurvyLines.png"
-          alt="curvy lines"
-          sx={{
-            pointerEvents: 'none',
-            position: 'absolute',
-            top: -180,
-            opacity: 0.7,
-          }}
-        />
+
         <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14 }}>
-          How it works
+          Servicio
         </Typography>
         <div>
           <Grid container spacing={5}>
@@ -103,16 +93,6 @@ function ProductHowItWorks() {
             </Grid>
           </Grid>
         </div>
-        <Button
-          color="secondary"
-          size="large"
-          variant="contained"
-          component="a"
-          href="/premium-themes/onepirate/sign-up/"
-          sx={{ mt: 8 }}
-        >
-          Get started
-        </Button>
       </Container>
     </Box>
   );

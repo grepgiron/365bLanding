@@ -55,57 +55,42 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
 
 const images = [
   {
-    url: 'https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400&q=80',
-    title: 'Snorkeling',
+    url: 'https://cdn.pixabay.com/photo/2018/01/21/14/16/woman-3096664_1280.jpg',
+    title: 'Maquillaje',
     width: '40%',
   },
   {
-    url: 'https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400&q=80',
-    title: 'Massage',
+    url: 'https://cdn.pixabay.com/photo/2021/06/24/12/26/hair-6361059_1280.jpg',
+    title: 'Tratamientos de Cabello',
     width: '20%',
   },
   {
-    url: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80',
-    title: 'Hiking',
+    url: 'https://cdn.pixabay.com/photo/2015/07/28/22/06/nails-865121_1280.jpg',
+    title: 'Manicure',
     width: '40%',
   },
   {
-    url: 'https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400&q=80',
-    title: 'Tour',
+    url: 'https://cdn.pixabay.com/photo/2021/01/06/09/12/feet-5893683_1280.jpg',
+    title: 'Pedicure',
     width: '38%',
   },
   {
-    url: 'https://images.unsplash.com/photo-1523309996740-d5315f9cc28b?auto=format&fit=crop&w=400&q=80',
-    title: 'Gastronomy',
+    url: 'https://cdn.pixabay.com/photo/2016/06/11/12/13/pink-hair-1450045_1280.jpg',
+    title: 'Cabello',
     width: '38%',
   },
   {
-    url: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=400&q=80',
-    title: 'Shopping',
+    url: 'https://cdn.pixabay.com/photo/2017/03/30/18/17/girl-2189247_1280.jpg',
+    title: 'Tintes',
     width: '24%',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1506941433945-99a2aa4bd50a?auto=format&fit=crop&w=400&q=80',
-    title: 'Walking',
-    width: '40%',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&w=400&q=80',
-    title: 'Fitness',
-    width: '20%',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1518136247453-74e7b5265980?auto=format&fit=crop&w=400&q=80',
-    title: 'Reading',
-    width: '40%',
-  },
+  }
 ];
 
 export default function ProductCategories() {
   return (
     <Container component="section" sx={{ mt: 8, mb: 4 }}>
       <Typography variant="h4" marked="center" align="center" component="h2">
-        For all tastes and all desires
+        Todos nuestro servicios
       </Typography>
       <Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
         {images.map((image) => (
