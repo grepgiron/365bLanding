@@ -4,9 +4,29 @@ import Grid from '@mui/material/Grid';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import Container from '@mui/material/Container';
 import Typography from '../components/Typography';
-import TextField from '../components/TextField';
 import Snackbar from '../components/Snackbar';
 import Button from '../components/Button';
+import axios from 'axios';
+import qs from 'qs';
+
+import {
+  Form,
+  Row,
+  Col,
+  ButtonToolbar,
+  Input
+} from 'rsuite';
+
+import 'rsuite/dist/rsuite.css'
+
+const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
+
+const TextField = ({ name, label, value, accepter, ...rest }) => (
+  <Form.Group controlId={`${name}-4`}>
+    <Form.ControlLabel style={{ color: '#575757', fontSize: '16px', fontFamily: 'sans-serif', lineHeight: '1.334'}}>{label}</Form.ControlLabel>
+    <Form.Control name={name} accepter={accepter} {...rest} />
+  </Form.Group>
+);
 
 function ProductCTA() {
   const [open, setOpen] = React.useState(false);
@@ -16,20 +36,38 @@ function ProductCTA() {
     telefono: '',
     dni: '',
     fecha:'',
+    hora:'',
     comentario: '',
   });
 
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formValue)
-  };
-
   
-  const handlePost = (event) => {
-    event.preventDefault();
+  const handlePost = async() => {
     
-    fetch('https://beauty365api.herokuapp.com/api/v1/citas/create', requestOptions)
+    try {
+      const response = await axios.post('https://beauty365api.herokuapp.com/api/v1/citas/create',
+      qs.stringify(formValue),
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(function (response) {
+        if( response.status === 200){
+          setStatus(response);
+          console.log(response);
+          setOpen(true);
+        } else {
+          setStatus(response);
+          console.log(response);
+          setOpen(true);
+        }
+      })
+    } catch (error) {
+      console.log(error);
+    }  
+
+
+    /* fetch('https://beauty365api.herokuapp.com/api/v1/citas/create', requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
@@ -40,7 +78,7 @@ function ProductCTA() {
       .catch(error => {
         console.error('Error:', error);
         setStatus(error);
-      });
+      }); */
   };
   
   const handleSubmit = (event) => {
@@ -67,7 +105,42 @@ function ProductCTA() {
               px: 2,
             }}
           >
-            <Box component="form" onSubmit={handlePost} sx={{ maxWidth: 600 }}>
+            <Form
+              onSubmit={handlePost}
+              onChange={setFormValue}
+              formValue={formValue}
+            >
+              {console.log(formValue)}
+              <Row>
+                <Col xs={12}>
+                  <TextField name="nombre" label="Nombre" />
+                  <TextField name="email" label="Email" />
+                </Col>
+                  <Col xs={12}>
+                    <TextField name="telefono" label="Telefono" />
+                    <TextField name="dni" label="DNI" />
+                  </Col>
+              </Row>
+              <Row style={{ marginTop: 20, marginBottom: 20}}>
+                <Col xs={12} md={12}>
+                  <TextField name="fecha" label="Fecha y Hora" type="date"/>
+                  <TextField name="hora" label="Fecha y Hora" type="time"/>
+                </Col>
+                <Col xs={12} md={12}>
+                  <TextField name="comentario" label="Comentario" accepter={Textarea} row={12}/>
+                </Col>
+              </Row>
+              
+              <Form.Group>
+                <ButtonToolbar>
+                  <Button onClick={handlePost}>Agregar</Button>
+                </ButtonToolbar>
+              </Form.Group>
+            </Form>
+
+
+
+            {/* <Box component="form" onSubmit={handlePost} sx={{ maxWidth: 600 }}>
               <Typography variant="h2" component="h2" gutterBottom>
                 Reserva tu cita
               </Typography>
@@ -115,7 +188,7 @@ function ProductCTA() {
               <TextField
                 noBorder
                 name="hora"
-                onChange={(event) => setFormValue({ ...formValue, fecha: event.target.value })}
+                onChange={(event) => setFormValue({ ...formValue, hora: event.target.value })}
                 placeholder="Hora"
                 type="time"
                 variant="standard"
@@ -138,7 +211,7 @@ function ProductCTA() {
               >
                 Reservar
               </Button>
-            </Box>
+            </Box> */}
           </Box>
         </Grid>
         <Grid
@@ -150,9 +223,9 @@ function ProductCTA() {
           <Box
             sx={{
               position: 'absolute',
-              top: -67,
-              left: -67,
-              right: 0,
+              top: -1,
+              left: -1,
+              right: 12,
               bottom: 0,
               width: '100%',
               background: 'url(/static/themes/onepirate/productCTAImageDots.png)',
@@ -160,16 +233,16 @@ function ProductCTA() {
           />
           <Box
             component="img"
-            src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750&q=80"
+            src="https://i.ibb.co/M5FxW9k/image.png"
             alt="call to action"
             sx={{
               position: 'absolute',
-              top: 100,
-              left: -100,
+              top: 22,
+              left: -126,
               right: 0,
               bottom: 0,
-              width: '100%',
-              maxWidth: 600,
+              
+              maxWidth: 488,
             }}
           />
         </Grid>
