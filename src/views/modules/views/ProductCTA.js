@@ -107,8 +107,17 @@ function ProductCTA() {
                 noBorder
                 name="fecha"
                 onChange={(event) => setFormValue({ ...formValue, fecha: event.target.value })}
-                placeholder="Fecha y Hora"
-                type="datetime-local"
+                placeholder="Fecha"
+                type="date"
+                variant="standard"
+                sx={{ width: '53%', mt: 3, mb: 2 }}
+              />
+              <TextField
+                noBorder
+                name="hora"
+                onChange={(event) => setFormValue({ ...formValue, fecha: event.target.value })}
+                placeholder="Hora"
+                type="time"
                 variant="standard"
                 sx={{ width: '53%', mt: 3, mb: 2 }}
               />
