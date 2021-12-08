@@ -250,7 +250,7 @@ function ProductCTA() {
       <Snackbar
         open={open}
         closeFunc={handleClose}
-        message={status.message}
+        message={'Cita rgistrada'}
       />
     </Container>
   );
